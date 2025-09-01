@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package example;
+
+import "google/api/annotations.proto";
+// import "google/api/client.proto";
+// import "google/api/field_behavior.proto";
+// import "google/api/resource.proto";
+// import "google/protobuf/empty.proto";
+// import "google/protobuf/field_mask.proto";
+// import "google/protobuf/timestamp.proto";
+// import "v1/annotation.proto";
+// import "v1/common.proto";
+
+option go_package = "github.com/ellie-layout/api/gen/example";
+
+service ExampleService {
+  rpc Ping(PingRequest) returns (PingResponse) {
+    // option (google.api.http) = {get: "/v1/{name=users/*}"};
+    option (google.api.http) = {get: "/example/ping"};
+
+    // option (google.api.method_signature) = "name";
+    // option (bytebase.v1.auth_method) = CUSTOM;
+  }
+
+  //   rpc GetUser(GetUserRequest) returns (User) {
+  //     option (google.api.http) = {get: "/v1/{name=users/*}"};
+  //     option (google.api.method_signature) = "name";
+  //     option (bytebase.v1.auth_method) = CUSTOM;
+  //   }
+}
+
+message PingRequest {
+  //   string name = 1 [
+  //     (google.api.field_behavior) = REQUIRED,
+  //     (google.api.resource_reference) = {type: "bytebase.com/User"}
+  //   ];
+}
+
+message PingResponse {
+  string message = 1;
+}
