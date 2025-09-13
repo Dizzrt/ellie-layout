@@ -5,6 +5,7 @@ modules:
 
 deps:
   - buf.build/googleapis/googleapis
+  - buf.build/dizzrt/ellie
 lint:
   use:
     - BASIC
