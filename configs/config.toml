@@ -1,1 +1,5 @@
-[server]
+[server.grpc]
+addr = ":50051"
+
+[server.http]
+addr = ":8081"
