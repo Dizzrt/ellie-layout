@@ -4,5 +4,8 @@
             "--proto_path=${workspaceFolder}/api/proto",
             "--proto_path=${workspaceFolder}/third_party",
         ]
+    },
+    "gopls": {
+        "buildFlags": ["-tags=wireinject"]
     }
 }
