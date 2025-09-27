@@ -179,11 +179,11 @@
             <ul>
               
                 <li>
-                  <a href="#example.PingRequest"><span class="badge">M</span>PingRequest</a>
+                  <a href="#example.HelloRequest"><span class="badge">M</span>HelloRequest</a>
                 </li>
               
                 <li>
-                  <a href="#example.PingResponse"><span class="badge">M</span>PingResponse</a>
+                  <a href="#example.HelloResponse"><span class="badge">M</span>HelloResponse</a>
                 </li>
               
               
@@ -194,7 +194,7 @@
               
               
                 <li>
-                  <a href="#example.ExampleService"><span class="badge">S</span>ExampleService</a>
+                  <a href="#example.Example"><span class="badge">S</span>Example</a>
                 </li>
               
             </ul>
@@ -212,14 +212,31 @@
       <p></p>
 
       
-        <h3 id="example.PingRequest">PingRequest</h3>
-        <p>string name = 1 [</p><p>(google.api.field_behavior) = REQUIRED,</p><p>(google.api.resource_reference) = {type: "bytebase.com/User"}</p><p>];</p>
+        <h3 id="example.HelloRequest">HelloRequest</h3>
+        <p></p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
-        <h3 id="example.PingResponse">PingResponse</h3>
+        <h3 id="example.HelloResponse">HelloResponse</h3>
         <p></p>
 
         
@@ -266,7 +283,7 @@
       
 
       
-        <h3 id="example.ExampleService">ExampleService</h3>
+        <h3 id="example.Example">Example</h3>
         <p></p>
         <table class="enum-table">
           <thead>
@@ -275,9 +292,9 @@
           <tbody>
             
               <tr>
-                <td>Ping</td>
-                <td><a href="#example.PingRequest">PingRequest</a></td>
-                <td><a href="#example.PingResponse">PingResponse</a></td>
+                <td>Hello</td>
+                <td><a href="#example.HelloRequest">HelloRequest</a></td>
+                <td><a href="#example.HelloResponse">HelloResponse</a></td>
                 <td><p></p></td>
               </tr>
             
@@ -302,9 +319,9 @@
               
               
               <tr>
-                <td>Ping</td>
+                <td>Hello</td>
                 <td>GET</td>
-                <td>/example/ping</td>
+                <td>/example/hello/{name}</td>
                 <td></td>
               </tr>
               

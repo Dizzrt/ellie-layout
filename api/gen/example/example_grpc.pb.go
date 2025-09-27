@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ExampleService_Ping_FullMethodName = "/example.ExampleService/Ping"
+	Example_Hello_FullMethodName = "/example.Example/Hello"
 )
 
-// ExampleServiceClient is the client API for ExampleService service.
+// ExampleClient is the client API for Example service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ExampleServiceClient interface {
-	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
+type ExampleClient interface {
+	Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error)
 }
 
-type exampleServiceClient struct {
+type exampleClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewExampleServiceClient(cc grpc.ClientConnInterface) ExampleServiceClient {
-	return &exampleServiceClient{cc}
+func NewExampleClient(cc grpc.ClientConnInterface) ExampleClient {
+	return &exampleClient{cc}
 }
 
-func (c *exampleServiceClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error) {
+func (c *exampleClient) Hello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PingResponse)
-	err := c.cc.Invoke(ctx, ExampleService_Ping_FullMethodName, in, out, cOpts...)
+	out := new(HelloResponse)
+	err := c.cc.Invoke(ctx, Example_Hello_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ExampleServiceServer is the server API for ExampleService service.
-// All implementations must embed UnimplementedExampleServiceServer
+// ExampleServer is the server API for Example service.
+// All implementations must embed UnimplementedExampleServer
 // for forward compatibility.
-type ExampleServiceServer interface {
-	Ping(context.Context, *PingRequest) (*PingResponse, error)
-	mustEmbedUnimplementedExampleServiceServer()
+type ExampleServer interface {
+	Hello(context.Context, *HelloRequest) (*HelloResponse, error)
+	mustEmbedUnimplementedExampleServer()
 }
 
-// UnimplementedExampleServiceServer must be embedded to have
+// UnimplementedExampleServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedExampleServiceServer struct{}
+type UnimplementedExampleServer struct{}
 
-func (UnimplementedExampleServiceServer) Ping(context.Context, *PingRequest) (*PingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+func (UnimplementedExampleServer) Hello(context.Context, *HelloRequest) (*HelloResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Hello not implemented")
 }
-func (UnimplementedExampleServiceServer) mustEmbedUnimplementedExampleServiceServer() {}
-func (UnimplementedExampleServiceServer) testEmbeddedByValue()                        {}
+func (UnimplementedExampleServer) mustEmbedUnimplementedExampleServer() {}
+func (UnimplementedExampleServer) testEmbeddedByValue()                 {}
 
-// UnsafeExampleServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ExampleServiceServer will
+// UnsafeExampleServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ExampleServer will
 // result in compilation errors.
-type UnsafeExampleServiceServer interface {
-	mustEmbedUnimplementedExampleServiceServer()
+type UnsafeExampleServer interface {
+	mustEmbedUnimplementedExampleServer()
 }
 
-func RegisterExampleServiceServer(s grpc.ServiceRegistrar, srv ExampleServiceServer) {
-	// If the following call pancis, it indicates UnimplementedExampleServiceServer was
+func RegisterExampleServer(s grpc.ServiceRegistrar, srv ExampleServer) {
+	// If the following call pancis, it indicates UnimplementedExampleServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&ExampleService_ServiceDesc, srv)
+	s.RegisterService(&Example_ServiceDesc, srv)
 }
 
-func _ExampleService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingRequest)
+func _Example_Hello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ExampleServiceServer).Ping(ctx, in)
+		return srv.(ExampleServer).Hello(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ExampleService_Ping_FullMethodName,
+		FullMethod: Example_Hello_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExampleServiceServer).Ping(ctx, req.(*PingRequest))
+		return srv.(ExampleServer).Hello(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// ExampleService_ServiceDesc is the grpc.ServiceDesc for ExampleService service.
+// Example_ServiceDesc is the grpc.ServiceDesc for Example service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var ExampleService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "example.ExampleService",
-	HandlerType: (*ExampleServiceServer)(nil),
+var Example_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "example.Example",
+	HandlerType: (*ExampleServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Ping",
-			Handler:    _ExampleService_Ping_Handler,
+			MethodName: "Hello",
+			Handler:    _Example_Hello_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

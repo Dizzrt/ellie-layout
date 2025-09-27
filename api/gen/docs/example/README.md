@@ -4,12 +4,12 @@
 ## Table of Contents
 
 - [example/example.proto](#example_example-proto)
-    - [PingRequest](#example-PingRequest)
-    - [PingResponse](#example-PingResponse)
+    - [HelloRequest](#example-HelloRequest)
+    - [HelloResponse](#example-HelloResponse)
   
     - [Errors](#example-Errors)
   
-    - [ExampleService](#example-ExampleService)
+    - [Example](#example-Example)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -22,22 +22,24 @@
 
 
 
-<a name="example-PingRequest"></a>
+<a name="example-HelloRequest"></a>
 
-### PingRequest
-string name = 1 [
-    (google.api.field_behavior) = REQUIRED,
-    (google.api.resource_reference) = {type: &#34;bytebase.com/User&#34;}
-  ];
+### HelloRequest
 
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
 
 
 
-<a name="example-PingResponse"></a>
 
-### PingResponse
+
+
+<a name="example-HelloResponse"></a>
+
+### HelloResponse
 
 
 
@@ -67,14 +69,14 @@ string name = 1 [
  
 
 
-<a name="example-ExampleService"></a>
+<a name="example-Example"></a>
 
-### ExampleService
+### Example
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Ping | [PingRequest](#example-PingRequest) | [PingResponse](#example-PingResponse) |  |
+| Hello | [HelloRequest](#example-HelloRequest) | [HelloResponse](#example-HelloResponse) |  |
 
  
 

@@ -66,26 +66,27 @@ func (Errors) EnumDescriptor() ([]byte, []int) {
 	return file_example_example_proto_rawDescGZIP(), []int{0}
 }
 
-type PingRequest struct {
+type HelloRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PingRequest) Reset() {
-	*x = PingRequest{}
+func (x *HelloRequest) Reset() {
+	*x = HelloRequest{}
 	mi := &file_example_example_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PingRequest) String() string {
+func (x *HelloRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PingRequest) ProtoMessage() {}
+func (*HelloRequest) ProtoMessage() {}
 
-func (x *PingRequest) ProtoReflect() protoreflect.Message {
+func (x *HelloRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_example_example_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -97,32 +98,39 @@ func (x *PingRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PingRequest.ProtoReflect.Descriptor instead.
-func (*PingRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use HelloRequest.ProtoReflect.Descriptor instead.
+func (*HelloRequest) Descriptor() ([]byte, []int) {
 	return file_example_example_proto_rawDescGZIP(), []int{0}
 }
 
-type PingResponse struct {
+func (x *HelloRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type HelloResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *PingResponse) Reset() {
-	*x = PingResponse{}
+func (x *HelloResponse) Reset() {
+	*x = HelloResponse{}
 	mi := &file_example_example_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *PingResponse) String() string {
+func (x *HelloResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PingResponse) ProtoMessage() {}
+func (*HelloResponse) ProtoMessage() {}
 
-func (x *PingResponse) ProtoReflect() protoreflect.Message {
+func (x *HelloResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_example_example_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -134,12 +142,12 @@ func (x *PingResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PingResponse.ProtoReflect.Descriptor instead.
-func (*PingResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use HelloResponse.ProtoReflect.Descriptor instead.
+func (*HelloResponse) Descriptor() ([]byte, []int) {
 	return file_example_example_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *PingResponse) GetMessage() string {
+func (x *HelloResponse) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
@@ -150,14 +158,15 @@ var File_example_example_proto protoreflect.FileDescriptor
 
 const file_example_example_proto_rawDesc = "" +
 	"\n" +
-	"\x15example/example.proto\x12\aexample\x1a\x19ellie/errors/errors.proto\x1a\x1cgoogle/api/annotations.proto\"\r\n" +
-	"\vPingRequest\"(\n" +
-	"\fPingResponse\x12\x18\n" +
+	"\x15example/example.proto\x12\aexample\x1a\x19ellie/errors/errors.proto\x1a\x1cgoogle/api/annotations.proto\"\"\n" +
+	"\fHelloRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\")\n" +
+	"\rHelloResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage*\x1c\n" +
 	"\x06Errors\x12\x12\n" +
-	"\aUNKNOWN\x10\x00\x1a\x05\xd0\xf3\x18\xe8\a2\\\n" +
-	"\x0eExampleService\x12J\n" +
-	"\x04Ping\x12\x14.example.PingRequest\x1a\x15.example.PingResponse\"\x15\x82\xd3\xe4\x93\x02\x0f\x12\r/example/pingB8Z6github.com/Dizzrt/ellie-layout/api/gen/example;exampleb\x06proto3"
+	"\aUNKNOWN\x10\x00\x1a\x05\xd0\xf3\x18\xe8\a2`\n" +
+	"\aExample\x12U\n" +
+	"\x05Hello\x12\x15.example.HelloRequest\x1a\x16.example.HelloResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/example/hello/{name}B8Z6github.com/Dizzrt/ellie-layout/api/gen/example;exampleb\x06proto3"
 
 var (
 	file_example_example_proto_rawDescOnce sync.Once
@@ -174,13 +183,13 @@ func file_example_example_proto_rawDescGZIP() []byte {
 var file_example_example_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_example_example_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_example_example_proto_goTypes = []any{
-	(Errors)(0),          // 0: example.Errors
-	(*PingRequest)(nil),  // 1: example.PingRequest
-	(*PingResponse)(nil), // 2: example.PingResponse
+	(Errors)(0),           // 0: example.Errors
+	(*HelloRequest)(nil),  // 1: example.HelloRequest
+	(*HelloResponse)(nil), // 2: example.HelloResponse
 }
 var file_example_example_proto_depIdxs = []int32{
-	1, // 0: example.ExampleService.Ping:input_type -> example.PingRequest
-	2, // 1: example.ExampleService.Ping:output_type -> example.PingResponse
+	1, // 0: example.Example.Hello:input_type -> example.HelloRequest
+	2, // 1: example.Example.Hello:output_type -> example.HelloResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
