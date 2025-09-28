@@ -1,6 +1,6 @@
 module github.com/Dizzrt/ellie-layout
 
-go 1.25.0
+go 1.25.1
 
 require (
 	connectrpc.com/connect v1.19.0
