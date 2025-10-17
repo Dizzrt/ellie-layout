@@ -1,10 +1,10 @@
 module github.com/Dizzrt/ellie-layout
 
-go 1.25.1
+go 1.25
 
 require (
 	connectrpc.com/connect v1.19.0
-	github.com/Dizzrt/ellie v0.1.1
+	github.com/Dizzrt/ellie v0.1.2
 	github.com/gin-gonic/gin v1.11.0
 	github.com/google/wire v0.7.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.2
