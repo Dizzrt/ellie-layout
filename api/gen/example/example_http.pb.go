@@ -9,12 +9,14 @@ package example
 import (
 	context "context"
 	http "github.com/Dizzrt/ellie/transport/http"
+	ginx "github.com/Dizzrt/ellie/transport/http/ginx"
 	gin "github.com/gin-gonic/gin"
 )
 
 var _ = new(context.Context)
 var _ = new(gin.Engine)
 var _ = new(http.Server)
+var _ = new(ginx.Ginx)
 
 const OperationExampleHello = "/Example/Hello"
 
@@ -29,13 +31,7 @@ func RegisterExampleHTTPServer(hs *http.Server, srv ExampleHTTPServer) {
 func _Example_Hello_0_HTTP_Handler(hs *http.Server, srv ExampleHTTPServer) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req HelloRequest
-		if err := ctx.ShouldBindUri(&req); err != nil {
-			ctx.JSON(http.StatusBadRequest, hs.WrapHTTPResponse(nil, err))
-			ctx.Abort()
-			return
-		}
-
-		if err := ctx.ShouldBindQuery(&req); err != nil {
+		if err := ginx.DecodeRequest(ctx, &req); err != nil {
 			ctx.JSON(http.StatusBadRequest, hs.WrapHTTPResponse(nil, err))
 			ctx.Abort()
 			return
