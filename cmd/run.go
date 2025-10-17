@@ -2,8 +2,10 @@ package cmd
 
 import (
 	"os"
+	"time"
 
 	"github.com/Dizzrt/ellie-layout/internal/conf"
+	"github.com/Dizzrt/ellie/log/zlog"
 	"github.com/Dizzrt/ellie/transport/grpc"
 	"github.com/Dizzrt/ellie/transport/http"
 
@@ -29,13 +31,24 @@ var runCmd = &cobra.Command{
 	Use:   "run",
 	Short: "Start this service",
 	Run: func(cmd *cobra.Command, args []string) {
-		logger := log.NewStdLogger(os.Stdout)
 		conf := config.NewStdViperConfig()
 		if err := conf.Load(); err != nil {
 			panic(err)
 		}
 
 		bootstrap, err := buildBootstrap(conf)
+		if err != nil {
+			panic(err)
+		}
+
+		logger, err := log.NewStdLoggerWriter(bootstrap.Log.File,
+			zlog.Symlink(bootstrap.Log.Symlink),
+			zlog.Level(zlog.ParseLevel(bootstrap.Log.Level)),
+			zlog.MaxAge(time.Duration(bootstrap.Log.MaxAge)*time.Second),
+			zlog.MaxBackups(uint(bootstrap.Log.MaxBackups)),
+			zlog.OutputType(zlog.ParseOutputType(bootstrap.Log.OutputType)),
+		)
+
 		if err != nil {
 			panic(err)
 		}
@@ -55,6 +68,10 @@ var runCmd = &cobra.Command{
 func buildBootstrap(c config.Config) (*conf.Bootstrap, error) {
 	var bootstrap conf.Bootstrap
 	if err := c.UnmarshalKey("server", &bootstrap.Server); err != nil {
+		return nil, err
+	}
+
+	if err := c.UnmarshalKey("log", &bootstrap.Log); err != nil {
 		return nil, err
 	}
 
