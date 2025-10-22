@@ -5,7 +5,7 @@ package example;
 import "ellie/errors/errors.proto";
 import "google/api/annotations.proto";
 
-option go_package = "github.com/Dizzrt/ellie-layout/api/gen/example;example";
+option go_package = "github.com/dizzrt/ellie-layout/api/gen/example;example";
 
 service Example {
   rpc Hello(HelloRequest) returns (HelloResponse) {

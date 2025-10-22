@@ -3,7 +3,7 @@ package iface
 import (
 	"context"
 
-	"github.com/Dizzrt/ellie-layout/api/gen/example"
+	"github.com/dizzrt/ellie-layout/api/gen/example"
 )
 
 type ExampleHandler struct {

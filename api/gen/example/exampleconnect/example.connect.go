@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	example "github.com/Dizzrt/ellie-layout/api/gen/example"
+	example "github.com/dizzrt/ellie-layout/api/gen/example"
 	http "net/http"
 	strings "strings"
 )

@@ -4,7 +4,7 @@ package example
 
 import (
 	fmt "fmt"
-	errors "github.com/Dizzrt/ellie/errors"
+	errors "github.com/dizzrt/ellie/errors"
 )
 
 // This is a compile-time assertion to ensure that this generated file

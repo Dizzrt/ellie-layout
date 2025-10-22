@@ -7,11 +7,11 @@
 package cmd
 
 import (
-	"github.com/Dizzrt/ellie"
-	"github.com/Dizzrt/ellie-layout/internal/conf"
-	"github.com/Dizzrt/ellie-layout/internal/iface"
-	"github.com/Dizzrt/ellie-layout/internal/server"
-	"github.com/Dizzrt/ellie/log"
+	"github.com/dizzrt/ellie"
+	"github.com/dizzrt/ellie-layout/internal/conf"
+	"github.com/dizzrt/ellie-layout/internal/iface"
+	"github.com/dizzrt/ellie-layout/internal/server"
+	"github.com/dizzrt/ellie/log"
 )
 
 // Injectors from wire.go:

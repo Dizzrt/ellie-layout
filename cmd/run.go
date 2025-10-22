@@ -4,14 +4,14 @@ import (
 	"os"
 	"time"
 
-	"github.com/Dizzrt/ellie-layout/internal/conf"
-	"github.com/Dizzrt/ellie/log/zlog"
-	"github.com/Dizzrt/ellie/transport/grpc"
-	"github.com/Dizzrt/ellie/transport/http"
+	"github.com/dizzrt/ellie-layout/internal/conf"
+	"github.com/dizzrt/ellie/log/zlog"
+	"github.com/dizzrt/ellie/transport/grpc"
+	"github.com/dizzrt/ellie/transport/http"
 
-	"github.com/Dizzrt/ellie"
-	"github.com/Dizzrt/ellie/config"
-	"github.com/Dizzrt/ellie/log"
+	"github.com/dizzrt/ellie"
+	"github.com/dizzrt/ellie/config"
+	"github.com/dizzrt/ellie/log"
 	"github.com/spf13/cobra"
 )
 
